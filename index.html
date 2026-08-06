@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduTest AI - Nền Tảng Thi Thử Thông Minh & Chống Gian Lận</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/anti-cheat.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  
+  <!-- Chart.js for Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- APP HEADER & NAVIGATION BAR -->
+  <header class="app-header">
+    <div class="container header-content">
+      <a class="logo" onclick="App.navigate('home')">
+        <div class="logo-icon">🎓</div>
+        <div>EduTest<span class="gradient-text">.AI</span></div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a class="nav-link active" id="nav-home" onclick="App.navigate('home')">Trang Chủ</a></li>
+        <li><a class="nav-link" id="nav-student" onclick="App.navigate('student-dashboard')">Học Sinh</a></li>
+        <li><a class="nav-link" id="nav-teacher" onclick="App.navigate('teacher-dashboard')">Giáo Viên</a></li>
+        <li><a class="nav-link" id="nav-admin" onclick="App.navigate('admin-dashboard')">Quản Trị Admin</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <!-- Quick Switch Demo Role -->
+        <div class="role-badge-selector">
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700; margin-right:4px;">ROLE:</span>
+          <button class="role-btn active" id="role-student" onclick="App.switchUserRole('student')">Học Sinh</button>
+          <button class="role-btn" id="role-teacher" onclick="App.switchUserRole('teacher')">Giáo Viên</button>
+          <button class="role-btn" id="role-admin" onclick="App.switchUserRole('admin')">Admin</button>
+        </div>
+
+        <button class="theme-toggle-btn" onclick="App.toggleTheme()" title="Đổi Giao diện Light/Dark">🌙</button>
+
+        <div id="user-profile-menu">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN VIEW CONTAINER -->
+  <main class="main-content container" id="view-container">
+    <!-- Dynamic views rendered via JavaScript app.js -->
+  </main>
+
+  <!-- AI TUTOR CHATBOT WIDGET -->
+  <div class="ai-tutor-widget">
+    <div class="ai-chat-box" id="ai-chat-box">
+      <div class="ai-chat-header">
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span style="font-size:1.4rem;">🤖</span>
+          <div>
+            <div style="font-size:0.95rem;">AI Tutor Chuyên Gia</div>
+            <div style="font-size:0.75rem; opacity:0.8; font-weight:400;">Trực tuyến 24/7 giải thích đáp án</div>
+          </div>
+        </div>
+        <button onclick="App.toggleAIChat()" style="background:transparent; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">✕</button>
+      </div>
+
+      <div class="ai-chat-messages" id="ai-chat-messages">
+        <div class="chat-bubble bot">
+          👋 Chào em! Thầy là **AI Tutor**. Em có thắc mắc gì về bài thi hoặc cần giải thích chi tiết câu hỏi nào không?
+        </div>
+      </div>
+
+      <div class="ai-chat-input-area">
+        <input type="text" class="ai-chat-input" id="ai-chat-input" placeholder="Hỏi AI câu hỏi hoặc đáp án..." onkeypress="if(event.key==='Enter') App.sendAIChatMessage()">
+        <button class="btn btn-primary btn-sm" onclick="App.sendAIChatMessage()">Gửi</button>
+      </div>
+    </div>
+
+    <button class="ai-tutor-btn" onclick="App.toggleAIChat()" title="Chat với AI Tutor">
+      💬
+    </button>
+  </div>
+
+  <!-- APP FOOTER -->
+  <footer class="app-footer">
+    <div class="container">
+      <p>© 2026 EduTest.AI - Hệ Thống Thi Thử Online Đa Nền Tảng & Anti-Cheat</p>
+      <p style="font-size:0.8rem; margin-top:0.3rem;">Hỗ trợ 11 môn học: Toán, Văn, Anh, Lý, Hóa, Sinh, Sử, Địa, GDKT&PL, Tin, Công nghệ</p>
+    </div>
+  </footer>
+
+  <!-- MODALS CONTAINER -->
+  <div id="modal-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/antiCheatEngine.js"></script>
+  <script src="js/examEngine.js"></script>
+  <script src="js/analyticsEngine.js"></script>
+  <script src="js/aiEngine.js"></script>
+  <script src="js/importerEngine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
