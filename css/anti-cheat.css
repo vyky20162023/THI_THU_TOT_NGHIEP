@@ -1,0 +1,97 @@
+/* ==========================================================================
+   ANTI-CHEAT.CSS - Anti-Cheat Overlay, Toast & Breach Warning Modal
+   ========================================================================== */
+
+/* Khóa vùng chọn văn bản khi đang làm bài thi */
+body.in-exam-mode {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* Toast Cảnh Báo Gian Lận */
+.anticheat-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  background: rgba(239, 68, 68, 0.95);
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
+  border: 1px solid #f87171;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.anticheat-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal Cảnh Báo Vi Phạm Chuyển Tab */
+.anticheat-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99998;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.anticheat-modal-card {
+  max-width: 480px;
+  width: 100%;
+  padding: 2rem;
+  background: #1e293b;
+  border: 2px solid #ef4444;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.4);
+  animation: modalShake 0.4s ease-in-out;
+}
+
+@keyframes modalShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+
+.anticheat-warning-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.anticheat-breach-counter {
+  display: inline-block;
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  font-size: 1.25rem;
+  font-weight: 800;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-full);
+  margin: 1rem 0;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
