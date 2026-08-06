@@ -1,0 +1,364 @@
+/* ==========================================================================
+   DASHBOARD.CSS - Dashboard Cards, Tables, Charts, Exam Room & AI Tutor Chat
+   ========================================================================== */
+
+/* Stat Cards */
+.stat-card {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-primary);
+}
+
+.stat-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--accent-primary);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  font-family: var(--font-heading);
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-top: 0.25rem;
+}
+
+/* Data Tables */
+.data-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.data-table th {
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--text-secondary);
+  font-weight: 700;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+
+.data-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.data-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Exam Taking Interface (Phòng Thi Online) */
+.exam-room-container {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  min-height: calc(100vh - 120px);
+}
+
+.question-panel {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.question-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.question-body {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-size: 1.05rem;
+}
+
+.option-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-primary);
+}
+
+.option-item.selected {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.option-letter {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.option-item.selected .option-letter {
+  background: var(--accent-primary);
+  color: #ffffff;
+}
+
+/* Question Sidebar Navigation Grid */
+.exam-sidebar {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timer-box {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(245, 158, 11, 0.15));
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.timer-digits {
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: #f87171;
+  letter-spacing: 0.05em;
+}
+
+.questions-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.6rem;
+}
+
+.q-grid-btn {
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.q-grid-btn.answered {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary);
+}
+
+.q-grid-btn.active {
+  ring: 2px solid #ffffff;
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+.q-grid-btn.flagged::after {
+  content: '🚩';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 0.75rem;
+}
+
+/* Exam Result View */
+.result-header-card {
+  padding: 2.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+}
+
+.score-display {
+  font-size: 4.5rem;
+  font-weight: 900;
+  font-family: var(--font-heading);
+  line-height: 1;
+  margin: 1rem 0;
+  background: linear-gradient(135deg, #34d399, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* AI Tutor Chatbot Drawer / Widget */
+.ai-tutor-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+}
+
+.ai-tutor-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: #ffffff;
+  border: none;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.ai-tutor-btn:hover {
+  transform: scale(1.08);
+}
+
+.ai-chat-box {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  width: 380px;
+  height: 520px;
+  background: #1e293b;
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  display: none;
+}
+
+.ai-chat-box.open {
+  display: flex;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-chat-header {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  padding: 1rem 1.25rem;
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ai-chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+}
+
+.chat-bubble {
+  max-width: 85%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  line-height: 1.4;
+}
+
+.chat-bubble.bot {
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+}
+
+.chat-bubble.user {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+}
+
+.ai-chat-input-area {
+  padding: 0.85rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ai-chat-input {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .exam-room-container { grid-template-columns: 1fr; }
+  .ai-chat-box { width: calc(100vw - 32px); right: -10px; }
+}
